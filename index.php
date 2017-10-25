@@ -1,120 +1,50 @@
 <html lang="en">
-<?php
-session_start();
-?>
 
 <head>
-	<title>Thinkfit</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<style>
-		.modal-header,
-		h4,
-		.close {
-			background-color: #5cb85c;
-			color: white !important;
-			text-align: center;
-			font-size: 30px;
-		}
-		
-		.modal-footer {
-			background-color: #f9f9f9;
-		}
-	</style>
-	<style>
-		div.calendar {
-			width: 100%;
-			border: 3px solid gray;
-		}
-		
-		header {
-			padding: 2em;
-			color: white;
-			background-color: #4d88ff;
-			clear: right;
-			text-align: center;
-		}
-		
-		.tablediv {
-			border-left: 3px solid gray;
-			margin-top: 2%;
-			width: 80%;
-			float: right;
-		}
-		
-		.title {
-			float: top;
-		}
-		
-		input[type=text],
-		input[type=password],
-		input[type=date],
-		input[type=email] {
-			width: 100%;
-			padding: 12px 20px;
-			margin: 8px 0;
-			display: inline-block;
-			border: 1px solid #ccc;
-			box-sizing: border-box;
-		}
-		/* Set a style for all buttons */
-		
-		button,
-		input[type=button] {
-			background-color: #4CAF50;
-			color: white;
-			padding: 14px 20px;
-			margin: 8px 0;
-			border: none;
-			cursor: pointer;
-			width: auto;
-		}
-		
-		button:hover {
-			opacity: 0.8;
-		}
-		
-		input[type=button]:hover {
-			opacity: 0.8;
-		}
-	</style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Cacca - Start Bootstrap Theme</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom fonts for this template -->
+	<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+	<!-- Plugin CSS -->
+	<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="css/creative.min.css" rel="stylesheet">
+
 </head>
 
-<body>
-	<div class="jumbotron text-center">
-		<h1>Company</h1>
-		<p>Facendo schifo ogni giorno di meno</p>
+<body id="page-top">
 
-		<form class="form-inline" action="prova.php" method="POST">
-			<div class="input-group">
-				<input type="email" class="form-control" size="50" placeholder="Email Address">
-				<div class="input-group-btn">
-					<button type="submit" class="btn btn-danger">Subscribe</button>
-				</div>
-			</div>
-		</form>
-	</div>
-
-	<nav class="navbar navbar-default navbar-fixed-top col-lg-12">
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a class="navbar-brand" href="#">Logo</a> </div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav navbar-right">
-					<li> <button type="button" data-toggle="modal" data-target="#myModalReg">REGISTRATI</button>
-					</li>
+			<a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+		
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
 					<?php 					
 					
 					if(isset($_COOKIE["logRem"])   ) {
 						if(!isset($_SESSION['loggedOut'])) {
 					   ?>
-					<li id="txtHint"><button onclick="logout()">LOGOUT</button>
+					<li class="nav-item" id="txtHint"><a class="nav-link js-scroll-trigger" href="javascript:logout();">LOGOUT</a>
 					</li>
+
 
 
 					<?php 
@@ -148,7 +78,9 @@ session_start();
 							if($_SESSION['loggedOut']==1){
 								
 								?>
-					<li id="txtHint"><button onclick="logout()">LOGOUT</button>
+					<li class="nav-item" id="txtHint"><a class="nav-link js-scroll-trigger" href="javascript:logout();">LOGOUT</a>
+					</li>
+
 					</li>
 
 
@@ -157,7 +89,8 @@ session_start();
 								
 							?>
 
-					<li id="txtHint"><button data-toggle="modal" data-target="#myModalLog">LOGIN</button>
+					<li class="nav-item" id="txtHint">
+						<a class="nav-link js-scroll-trigger" href='javascript:openModal();'>Login</a>
 					</li>
 
 					<?php 
@@ -167,7 +100,8 @@ session_start();
 						if(!isset($_SESSION['loggedOut'])) {
 					?>
 
-					<li id="txtHint"><button data-toggle="modal" data-target="#myModalLog">LOGIN</button>
+					<li class="nav-item" id="txtHint">
+						<a class="nav-link js-scroll-trigger" href='javascript:openModal();' >Login</a>
 					</li>
 
 					<?php 
@@ -175,8 +109,10 @@ session_start();
 							if($_SESSION['loggedOut']==1){
 								
 								?>
-					<li id="txtHint"><button onclick="logout()">LOGOUT</button>
+					<li class="nav-item" id="txtHint">
+					<a class="nav-link js-scroll-trigger" href="javascript:logout();">LOGOUT</a>
 					</li>
+
 
 
 					<?php 
@@ -184,7 +120,8 @@ session_start();
 								
 							?>
 
-					<li id="txtHint"><button data-toggle="modal" data-target="#myModalLog">LOGIN</button>
+					<li class="nav-item" id="txtHint">
+						<a class="nav-link js-scroll-trigger" href='javascript:openModal();'>Login</a>
 					</li>
 
 					<?php 
@@ -193,177 +130,189 @@ session_start();
 					}
 		?>
 
-					<li><a href="#portfolio">PORTFOLIO</a>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#services">Prova</a>
 					</li>
-					<li><a href="#pricing">PRICING</a>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
 					</li>
-					<li><a href="#contact">CONTACT</a>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<style>
-		.bg-grey {
-			background-color: #f6f6f6;
-		}
-	</style>
-	<style>
-		.jumbotron {
-			background-color: #f4511e;
-			color: #fff;
-			padding: 100px 25px;
-		}
-		
-		.container-fluid {
-			padding: 60px 50px;
-		}
-	</style>
-	<style>
-		.logo {
-			font-size: 200px;
-		}
-		
-		@media screen and (max-width: 768px) {
-			.col-sm-4 {
-				text-align: center;
-				margin: 25px 0;
-			}
-		}
-		
-		.myCarousel {
-			.carousel-inner {
-				> .item {
-					transition: 500ms ease-in-out left;
-				}
-				.active {
-					&.left {
-						left: -30%;
-					}
-					&.right {
-						left: 33%;
-					}
-				}
-				.next {
-					left: 33%;
-				}
-				.prev {
-					left: -33%;
-				}
-				@media all and (transform-3d),
-				(-webkit-transform-3d) {
-					> .item {
-						transition: 500ms ease-in-out left;
-						transition: 500ms ease-in-out all;
-						backface-visibility: visible;
-						transform: none!important;
-					}
-				}
-			}
-			.carouse-control {
-				&.left,
-				&.right {
-					background-image: none;
-				}
-			}
-		}
-		
-		.carousel-inner> .item> img,
-		.carousel-inner> .item> a> img {
-			width: 70%;
-			margin: auto;
-		}
-	</style>
 
-	<div id="theCarousel" class="carousel slide" data-ride="carousel">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#theCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#theCarousel" data-slide-to="1"></li>
-			<li data-target="#theCarousel" data-slide-to="2"></li>
-		</ol>
-
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner">
-			<div class="item active">
-				<img src="https://media-cdn.tripadvisor.com/media/photo-s/07/72/27/a3/chicago.jpg" alt="Chania">
-				<div class="carousel-caption">
-					<h3>Los Angeles</h3>
-					<p>LA is always so much fun!</p>
-				</div>
+	<header class="masthead">
+		<div class="header-content">
+			<div class="header-content-inner">
+				<h1 id="homeHeading">Your Favorite Source of Free Bootstrap Themes</h1>
+				<hr>
+				<p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
+				<a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
 			</div>
+		</div>
+	</header>
 
-			<div class="item">
-				<img src="http://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1446655168/chicago-header-dg1115.jpg?itok=MqZFOaTi" alt="Chicago">
-				<div class="carousel-caption">
-					<h3>Chicago</h3>
-					<p>Thank you, Chicago!</p>
-				</div>
-			</div>
-
-			<div class="item">
-				<img src="ny.jpg" alt="New York">
-				<div class="carousel-caption">
-					<h3>New York</h3>
-					<p>We love the Big Apple!</p>
+	<section class="bg-primary" id="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto text-center">
+					<h2 class="section-heading text-white">We've got what you need!</h2>
+					<hr class="light">
+					<p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
+					<a class="btn btn-default btn-xl js-scroll-trigger" href="#services">Get Started!</a>
 				</div>
 			</div>
 		</div>
+	</section>
 
-		<!-- Left and right controls -->
-		<a class="left carousel-control" href="#theCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-	
-
-		<a class="right carousel-control" href="#theCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-	
-	</div>
-
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-8">
-				<h2>About Company Page</h2>
-				<h4>Lorem ipsum..</h4>
-				<p>Lorem ipsum..</p>
-				<button class="btn btn-default btn-lg">Get in Touch</button>
-			</div>
-			<div class="col-sm-4"> <span class="glyphicon glyphicon-signal logo"></span> </div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="myModalReg" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header" style="padding:35px 50px;">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4><span class="glyphicon glyphicon-lock"></span> Registrati</h4>
-				</div>
-				<div class="modal-body" style="padding:40px 50px;">
-					<form action="registrazione.php" method="POST" role="form">
-						<div class="form-group">
-							<label for="usrname"><span class="glyphicon glyphicon-user"></span> Email</label>
-							<input type="text" class="form-control" id="emailReg" name="email" placeholder="Enter email">
-						</div>
-						<div class="form-group">
-							<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-							<input type="password" class="form-control" id="pswReg" name="psw" placeholder="Enter password">
-						</div>
-						<button type="submit" class="btn btn-success btn-block" onclick="reg()" data-dismiss="modal"><span class="glyphicon glyphicon-off"></span> Registrati</button>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Chiudi</button>
-
+	<section id="services">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading">At Your Service</h2>
+					<hr class="primary">
 				</div>
 			</div>
-
 		</div>
-	</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 text-center">
+					<div class="service-box">
+						<i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+						<h3>Sturdy Templates</h3>
+						<p class="text-muted">Our templates are updated regularly so they don't break.</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 text-center">
+					<div class="service-box">
+						<i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
+						<h3>Ready to Ship</h3>
+						<p class="text-muted">You can use this theme as is, or you can make changes!</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 text-center">
+					<div class="service-box">
+						<i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+						<h3>Up to Date</h3>
+						<p class="text-muted">We update dependencies to keep things fresh.</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 text-center">
+					<div class="service-box">
+						<i class="fa fa-4x fa-heart text-primary sr-icons"></i>
+						<h3>Made with Love</h3>
+						<p class="text-muted">You have to make your websites with love these days!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="p-0" id="portfolio">
+		<div class="container-fluid">
+			<div class="row no-gutter popup-gallery">
+				<div class="col-lg-4 col-sm-6">
+					<a class="portfolio-box" href="img/portfolio/fullsize/1.jpg">
+              <img class="img-fluid" src="img/portfolio/thumbnails/1.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+				
+				</div>
+				<div class="col-lg-4 col-sm-6">
+					<a class="portfolio-box" href="img/portfolio/fullsize/2.jpg">
+              <img class="img-fluid" src="img/portfolio/thumbnails/2.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+				
+				</div>
+				<div class="col-lg-4 col-sm-6">
+					<a class="portfolio-box" href="img/portfolio/fullsize/3.jpg">
+              <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+				
+				</div>
+				<div class="col-lg-4 col-sm-6">
+					<a class="portfolio-box" href="img/portfolio/fullsize/4.jpg">
+              <img class="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+				
+				</div>
+				<div class="col-lg-4 col-sm-6">
+					<a class="portfolio-box" href="img/portfolio/fullsize/5.jpg">
+              <img class="img-fluid" src="img/portfolio/thumbnails/5.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+				
+				</div>
+				<div class="col-lg-4 col-sm-6">
+					<a class="portfolio-box" href="img/portfolio/fullsize/6.jpg">
+              <img class="img-fluid" src="img/portfolio/thumbnails/6.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+				
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<div class="modal fade" id="myModalLog" role="dialog">
 		<div class="modal-dialog">
@@ -399,21 +348,46 @@ session_start();
 		</div>
 	</div>
 
-
-	<div class="container-fluid bg-grey">
-		<div class="row">
-			<div class="col-sm-4"> <span class="glyphicon glyphicon-globe logo"></span> </div>
-			<div class="col-sm-8">
-				<h2>Our Values</h2>
-				<h4><strong>MISSION:</strong> Our mission lorem ipsum..</h4>
-				<p><strong>VISION:</strong> Our vision Lorem ipsum..</p>
-			</div>
+	<div class="call-to-action bg-dark">
+		<div class="container text-center">
+			<h2>Free Download at Start Bootstrap!</h2>
+			<a class="btn btn-default btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Download Now!</a>
 		</div>
 	</div>
-	<div id="googleMap" style="height:400px;width:100%;"></div>
-	<script>
-		function logout() {
 
+	<section id="contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto text-center">
+					<h2 class="section-heading">Let's Get In Touch!</h2>
+					<hr class="primary">
+					<p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 ml-auto text-center">
+					<i class="fa fa-phone fa-3x sr-contact"></i>
+					<p>123-456-6789</p>
+				</div>
+				<div class="col-lg-4 mr-auto text-center">
+					<i class="fa fa-envelope-o fa-3x sr-contact"></i>
+					<p>
+						<a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		
+		function openModal() {
+			$( "#myModalLog" ).modal();
+		}
+		
+		
+
+		function logout() {
 			if ( window.XMLHttpRequest ) {
 				// code for IE7+, Firefox, Chrome, Opera, Safari
 				xmlhttp = new XMLHttpRequest();
@@ -424,7 +398,6 @@ session_start();
 			xmlhttp.onreadystatechange = function () {
 
 				if ( this.readyState == 4 && this.status == 200 ) {
-
 					document.getElementById( "txtHint" ).innerHTML = this.responseText;
 
 				}
@@ -465,7 +438,7 @@ session_start();
 			}
 
 		}
-		
+
 		function reg() {
 
 			var email = document.getElementById( 'emailReg' ).value;
@@ -495,45 +468,19 @@ session_start();
 
 		}
 	</script>
-	<script>
-		// Instantiate the Bootstrap carousel
-		$( '.multi-item-carousel' ).carousel( {
-			interval: false
-		} );
 
-		// for every slide in carousel, copy the next slide's item in the slide.
-		// Do the same for the next, next item.
-		$( '.multi-item-carousel .item' ).each( function () {
-			var next = $( this ).next();
-			if ( !next.length ) {
-				next = $( this ).siblings( ':first' );
-			}
-			next.children( ':first-child' ).clone().appendTo( $( this ) );
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-			if ( next.next().length > 0 ) {
-				next.next().children( ':first-child' ).clone().appendTo( $( this ) );
-			} else {
-				$( this ).siblings( ':first' ).children( ':first-child' ).clone().appendTo( $( this ) );
-			}
-		} );
+	<!-- Plugin JavaScript -->
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-		function myMap() {
-			var myCenter = new google.maps.LatLng( 41.878114, -87.629798 );
-			var mapProp = {
-				center: myCenter,
-				zoom: 12,
-				scrollwheel: false,
-				draggable: false,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
-			var map = new google.maps.Map( document.getElementById( "googleMap" ), mapProp );
-			var marker = new google.maps.Marker( {
-				position: myCenter
-			} );
-			marker.setMap( map );
-		}
-	</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+	<!-- Custom scripts for this template -->
+	<script src="js/creative.min.js"></script>
+
 </body>
 
 </html>

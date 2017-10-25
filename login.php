@@ -39,12 +39,12 @@ if ( mysqli_num_rows( $result ) > 0 ) {
 		
 		$_SESSION['loggedOut']=1;
 
-		echo "<button onclick='logout()'>LOGOUT</button>";
+		echo "<a class='nav-link js-scroll-trigger' href='javascript:logout();'>LOGOUT</a>";
 
 		mysqli_close( $con );
 
 	} else {
-		echo "<button onclick='logout()'>LOGOUT</button>";
+		echo "<a class='nav-link js-scroll-trigger' href='javascript:logout();'>LOGOUT</a>";
 
 		mysqli_close( $con );
 
@@ -52,7 +52,7 @@ if ( mysqli_num_rows( $result ) > 0 ) {
 
 
 } else {
-	echo "<button onclick='logout()'>LOGOUT</button>";
+	echo "<a class='nav-link js-scroll-trigger' href='javascript:logout();'>LOGOUT</a>";
 	mysqli_close( $con );
 }
 
