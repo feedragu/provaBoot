@@ -9,8 +9,9 @@ if ( !$con ) {
 }
 
 $parametri = json_decode(base64_decode($_GET['p']), true);
-$idFacebook = $db->real_escape_string($parametri['idFacebook']);
+$idFacebook = $con->real_escape_string($parametri['idFacebook']);
 
+echo "FIN QUI TUTTAPPOSTO 1";
 
 
 mysqli_select_db( $con, "thinkfit" );
@@ -52,15 +53,21 @@ if ( mysqli_num_rows( $result ) > 0 ) {
 		mysqli_close( $con );
 
 	}
+	echo "FIN QUI TUTTAPPOSTO 2";
+
 
 
 } else {
-	$email = $db->real_escape_string($parametri['email']);
-	$cognome = $db->real_escape_string($parametri['cognome']);
-	$nome = $db->real_escape_string($parametri['nome']);
-	$gender = $db->real_escape_string($parametri['gender']);
-	$city = $db->real_escape_string($parametri['city']);
-	$picture = $db->real_escape_string($parametri['picture']);
+	
+	$email = $con->real_escape_string($parametri['email']);
+	$cognome = $con->real_escape_string($parametri['cognome']);
+	$nome = $con->real_escape_string($parametri['nome']);
+	$gender = $con->real_escape_string($parametri['gender']);
+	$city = $con->real_escape_string($parametri['city']);
+	$picture = $con->real_escape_string($parametri['picture']);
+	
+	echo "FIN QUI TUTTAPPOSTO 3 ";
+
 	
 	function random_str( $length, $keyspace = '0123456789' ) {
 	$str = '';
@@ -69,15 +76,20 @@ if ( mysqli_num_rows( $result ) > 0 ) {
 		$str .= $keyspace[ random_int( 0, $max ) ];
 	}
 	return $str;
+	}
+		echo "FIN QUI TUTTAPPOSTO 4";
+
 		
 	$query_registrazioneAcc = mysqli_query( $con, "INSERT INTO accounts (idaccounts, email, password, tipo_account, idFacebook)	VALUES ('" . random_str( 11 ) . "','" . $email . "','NULL','U','".$idFacebook."')" )
 		or die( "query di registrazione non riuscita" . mysqli_error() );
 		
 	$query_registrazioneUser = mysqli_query( $con, "INSERT INTO users (nome, cognome, sesso, citta, picture)	VALUES ('" . $nome. "','" . $cognome . "','" . $gender . "','" . $city . "','".$picture."')" )
 		or die( "query di registrazione non riuscita" . mysqli_error() );	
+		
+		echo $idFacebook.$nome.$cognome.$gender.$city.$email;
 }
 
-}
+
 
 
 
