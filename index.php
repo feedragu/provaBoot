@@ -72,7 +72,7 @@ function loginFacebook()
  
 function completaLoginFacebook(dati)
 {
-    window.location.href = "fbLogin.php" + btoa(JSON.stringify(dati));
+    window.location.href = "fbLogin.php?p=" + btoa(JSON.stringify(dati));
 }
  
 </script>
