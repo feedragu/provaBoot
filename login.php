@@ -9,10 +9,9 @@ if ( !$con ) {
 }
 
 
-
 mysqli_select_db( $con, "thinkfit" );
 
-$sql = "SELECT idaccounts, email, password, tipo_account FROM `accounts` WHERE email='" . $_GET[ "email" ] . "' ";
+$sql = "SELECT idaccounts, email, password, tipo_account FROM `accounts` WHERE email='" . $_GET[ "email" ] . "'";
 
 $result = mysqli_query( $con, $sql );
 $psw_control = "";

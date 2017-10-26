@@ -26,6 +26,58 @@
 </head>
 
 <body id="page-top">
+<script>
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '368179613605049',
+      cookie     : true,  
+      xfbml      : true,      
+      version    : 'v2.10' 
+    });
+  };
+ 
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script>
+function loginFacebook()
+{
+    FB.login(function(response) {
+        if (response.status === 'connected') {
+             var idUtente = response.authResponse.userID;
+                FB.api('/me', { fields : "name, email, first_name, last_name, gender, location, picture" }, function(response) {
+                    console.log(response);
+                    dati = { idFacebook: idUtente,
+						cognome : response.last_name,
+                             nome : response.first_name,
+                             email : response.email,
+							gender: response.gender,
+							city: response.location,
+							picture: response.picture
+							
+                           };
+                            
+                    completaLoginFacebook(dati);
+                });
+          } 
+    }, { scope: 'email,public_profile,user_location' } );
+}
+ 
+function completaLoginFacebook(dati)
+{
+    window.location.href = "fbLogin.php" + btoa(JSON.stringify(dati));
+}
+ 
+</script>
+
+
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -35,6 +87,8 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 		
+
+
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<?php 					
@@ -101,7 +155,7 @@
 					?>
 
 					<li class="nav-item" id="txtHint">
-						<a class="nav-link js-scroll-trigger" href='javascript:openModal();' >Login</a>
+						<a class="nav-link js-scroll-trigger" href='javascript:openModal();'>Login</a>
 					</li>
 
 					<?php 
@@ -110,7 +164,7 @@
 								
 								?>
 					<li class="nav-item" id="txtHint">
-					<a class="nav-link js-scroll-trigger" href="javascript:logout();">LOGOUT</a>
+						<a class="nav-link js-scroll-trigger" href="javascript:logout();">LOGOUT</a>
 					</li>
 
 
@@ -229,6 +283,8 @@
               </div>
             </a>
 				
+
+
 				</div>
 				<div class="col-lg-4 col-sm-6">
 					<a class="portfolio-box" href="img/portfolio/fullsize/2.jpg">
@@ -245,6 +301,8 @@
               </div>
             </a>
 				
+
+
 				</div>
 				<div class="col-lg-4 col-sm-6">
 					<a class="portfolio-box" href="img/portfolio/fullsize/3.jpg">
@@ -261,6 +319,8 @@
               </div>
             </a>
 				
+
+
 				</div>
 				<div class="col-lg-4 col-sm-6">
 					<a class="portfolio-box" href="img/portfolio/fullsize/4.jpg">
@@ -277,6 +337,8 @@
               </div>
             </a>
 				
+
+
 				</div>
 				<div class="col-lg-4 col-sm-6">
 					<a class="portfolio-box" href="img/portfolio/fullsize/5.jpg">
@@ -293,6 +355,8 @@
               </div>
             </a>
 				
+
+
 				</div>
 				<div class="col-lg-4 col-sm-6">
 					<a class="portfolio-box" href="img/portfolio/fullsize/6.jpg">
@@ -309,6 +373,8 @@
               </div>
             </a>
 				
+
+
 				</div>
 			</div>
 		</div>
@@ -334,6 +400,8 @@
 						<label><input type="checkbox" value="" id="checkLog" name="check">Remember me</label>
 					</div>
 					<button class="btn btn-success btn-block" onclick="login()" data-dismiss="modal"><span class="glyphicon glyphicon-off" ></span> Login</button>
+					<button class="btn btn-block" style="color:#fff; background-color: #201EE9" onclick="loginFacebook()" data-dismiss="modal"><span class="glyphicon glyphicon-off" ></span> Accedi con Facebook</button>
+
 
 				</div>
 				<div class="modal-footer">
@@ -380,12 +448,11 @@
 	</section>
 
 	<script>
-		
 		function openModal() {
 			$( "#myModalLog" ).modal();
 		}
-		
-		
+
+
 
 		function logout() {
 			if ( window.XMLHttpRequest ) {

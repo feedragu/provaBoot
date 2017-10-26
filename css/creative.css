@@ -339,6 +339,9 @@ header.masthead {
   border: none;
   border-radius: 300px;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; }
-
+.btn-fb-access{
+	color:#fff;
+	background-color: #152C97;
+}
 .btn-xl {
   padding: 15px 30px; }
